@@ -1,0 +1,166 @@
+:root {
+  --primary: #1976D2;
+  --secondary: #424242;
+  --accent: #FFEB3B;
+
+  --ttt-bg: #fafbfc;
+  --ttt-header-bg: var(--primary);
+  --ttt-board-bg: #fff;
+  --ttt-board-border: var(--secondary);
+  --ttt-square-bg: #f9fafd;
+  --ttt-square-hover: #e3f0ff;
+  --ttt-square-border: var(--secondary);
+  --ttt-square-x: var(--primary);
+  --ttt-square-o: var(--accent);
+  --ttt-status-text: var(--secondary);
+  --ttt-reset-bg: var(--primary);
+  --ttt-reset-text: #fff;
+  --ttt-reset-hover: #145ea1;
+  --ttt-title-text: #fff;
+  --ttt-shadow: 0 6px 32px 0 rgba(25, 118, 210, 0.08);
+}
+
+body {
+  background: var(--ttt-bg);
+}
+
+/* App BG */
+.ttt-app-bg {
+  min-height: 100vh;
+  background: var(--ttt-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.ttt-header {
+  background: var(--ttt-header-bg);
+  padding: 40px 0 8px 0;
+  text-align: center;
+  border-bottom: 3.5px solid var(--secondary);
+  box-shadow: var(--ttt-shadow);
+}
+.ttt-title {
+  margin: 0;
+  font-size: 2.8rem;
+  color: var(--ttt-title-text);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Main container */
+.ttt-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* Board and Squares */
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 68px);
+  grid-template-rows: repeat(3, 68px);
+  gap: 13px;
+  background: var(--ttt-board-bg);
+  border: 2.7px solid var(--ttt-board-border);
+  border-radius: 14px;
+  box-shadow: var(--ttt-shadow);
+  margin: 24px auto 18px auto;
+  padding: 24px;
+}
+
+.ttt-square {
+  background: var(--ttt-square-bg);
+  border: 2px solid var(--ttt-square-border);
+  border-radius: 8px;
+  width: 68px;
+  height: 68px;
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 68px;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: border 0.14s, background 0.14s;
+  box-shadow: 0 1.5px 9px 0 rgba(25, 118, 210, 0.043);
+  user-select: none;
+}
+.ttt-square:focus, .ttt-square:not(:disabled):hover {
+  background: var(--ttt-square-hover);
+  border: 2.3px solid var(--primary);
+}
+
+.ttt-square[aria-label*="X"] {
+  color: var(--ttt-square-x);
+}
+.ttt-square[aria-label*="O"] {
+  color: var(--ttt-square-o);
+}
+
+.ttt-square:disabled {
+  cursor: not-allowed;
+  background: #f4f6fb;
+  opacity: 0.72;
+}
+
+/* Status message above board */
+.ttt-status {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ttt-status-text);
+  margin-bottom: 0.7rem;
+  min-height: 2.1rem;
+  letter-spacing: 0.02em;
+}
+
+/* Reset button below board */
+.ttt-reset-btn {
+  margin-top: 14px;
+  background: var(--ttt-reset-bg);
+  color: var(--ttt-reset-text);
+  border: none;
+  padding: 12px 38px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  box-shadow: 0 2.5px 12px 0 rgba(25, 118, 210, 0.05);
+  outline: none;
+  letter-spacing: 0.05em;
+}
+.ttt-reset-btn:hover, .ttt-reset-btn:focus {
+  background: var(--ttt-reset-hover);
+}
+
+.ttt-footer {
+  margin-top: auto;
+  padding: 5px 0 20px 0;
+}
+
+@media (max-width: 768px) {
+  .ttt-board {
+    grid-template-columns: repeat(3, 46px);
+    grid-template-rows: repeat(3, 46px);
+    padding: 12px;
+    gap: 7px;
+  }
+  .ttt-square {
+    width: 46px;
+    height: 46px;
+    font-size: 1.4rem;
+    line-height: 46px;
+  }
+  .ttt-header {
+    padding: 28px 0 6px 0;
+  }
+  .ttt-main-content {
+    margin-top: 10px;
+  }
+}
